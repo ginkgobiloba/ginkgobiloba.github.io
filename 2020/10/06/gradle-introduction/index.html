@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Gradle入门 | Ginkgobiloba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装GradleGradle需要JDK 8及以上版本，在Gradle网站上下载最新版本，有binary-only和complete版本，区别是complete版本包含了文档和源代码，下载binary-only版本就可以了： 1wget https:&#x2F;&#x2F;services.gradle.org&#x2F;distributions&#x2F;gradle-6.6.1-bin.zip 解压缩： 1unzip gradle-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle入门">
+<meta property="og:url" content="https://ginkgobiloba.github.io/2020/10/06/gradle-introduction/index.html">
+<meta property="og:site_name" content="Ginkgobiloba">
+<meta property="og:description" content="安装GradleGradle需要JDK 8及以上版本，在Gradle网站上下载最新版本，有binary-only和complete版本，区别是complete版本包含了文档和源代码，下载binary-only版本就可以了： 1wget https:&#x2F;&#x2F;services.gradle.org&#x2F;distributions&#x2F;gradle-6.6.1-bin.zip 解压缩： 1unzip gradle-">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-07T03:13:21.000Z">
+<meta property="article:modified_time" content="2020-10-07T03:37:46.827Z">
+<meta property="article:author" content="Ginkgobiloba">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Ginkgobiloba" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-gradle-introduction" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Gradle入门
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/10/06/gradle-introduction/" class="article-date">
+  <time datetime="2020-10-07T03:13:21.000Z" itemprop="datePublished">2020-10-06</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装Gradle"><a href="#安装Gradle" class="headerlink" title="安装Gradle"></a>安装Gradle</h2><p>Gradle需要JDK 8及以上版本，在Gradle<a target="_blank" rel="noopener" href="https://gradle.org/releases/">网站</a>上下载最新版本，有binary-only和complete版本，区别是complete版本包含了文档和源代码，下载binary-only版本就可以了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip</span><br></pre></td></tr></table></figure>
+<p>解压缩：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip gradle-6.6.1-bin.zip</span><br></pre></td></tr></table></figure>
+<p>在.bashrc里把bin文件夹加入PATH：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH&#x3D;&quot;$PATH&quot;:~&#x2F;gradle-6.6.1&#x2F;bin</span><br></pre></td></tr></table></figure>
+<p>重开terminal就可以检查Gradle是否安装好了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化一个Java应用"><a href="#初始化一个Java应用" class="headerlink" title="初始化一个Java应用"></a>初始化一个Java应用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir gradle-demo</span><br><span class="line"><span class="built_in">cd</span> gradle-demo</span><br><span class="line">gradle init</span><br></pre></td></tr></table></figure>
+<p>然后选择application作为project类型，语言选Java，DSL选Groovy，test框架选JUnit 4，project名设置gradle-demo，package名设置为demo。然后就可以看到Gradle生成了一些文件：</p>
+<ul>
+<li>build.gradle：这个文件包含了如何用Gradle构建项目的设置</li>
+<li>.gitattributes</li>
+<li>.gitignore</li>
+<li>.gradle：</li>
+<li>gradle：这个文件夹实际上是Gradle wrapper</li>
+<li>gradlew：</li>
+<li>gradlew.bat：</li>
+<li>settings.gradle</li>
+<li>src：源代码目录</li>
+</ul>
+<p>然后就可以用Gradle wrapper脚本来编译运行项目了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew run</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h2><h2 id="依赖类型"><a href="#依赖类型" class="headerlink" title="依赖类型"></a>依赖类型</h2><ul>
+<li>implementation</li>
+<li>api</li>
+<li>testImplementation</li>
+</ul>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/05/blog-with-hexo-and-github/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用Hexo和GitHub来搭建博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/ginkgobiloba" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2020 Ginkgobiloba 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a target="_blank" rel="noopener" href="https://github.com/ginkgobiloba" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  </div>
+</body>
+</html>

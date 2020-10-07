@@ -34,6 +34,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-gradle-introduction" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/06/gradle-introduction/">Gradle入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2020/10/06/gradle-introduction/" class="article-date">
+  <time datetime="2020-10-07T03:13:21.000Z" itemprop="datePublished">2020-10-06</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装Gradle"><a href="#安装Gradle" class="headerlink" title="安装Gradle"></a>安装Gradle</h2><p>Gradle需要JDK 8及以上版本，在Gradle<a target="_blank" rel="noopener" href="https://gradle.org/releases/">网站</a>上下载最新版本，有binary-only和complete版本，区别是complete版本包含了文档和源代码，下载binary-only版本就可以了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://services.gradle.org/distributions/gradle-6.6.1-bin.zip</span><br></pre></td></tr></table></figure>
+<p>解压缩：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip gradle-6.6.1-bin.zip</span><br></pre></td></tr></table></figure>
+<p>在.bashrc里把bin文件夹加入PATH：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH&#x3D;&quot;$PATH&quot;:~&#x2F;gradle-6.6.1&#x2F;bin</span><br></pre></td></tr></table></figure>
+<p>重开terminal就可以检查Gradle是否安装好了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化一个Java应用"><a href="#初始化一个Java应用" class="headerlink" title="初始化一个Java应用"></a>初始化一个Java应用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir gradle-demo</span><br><span class="line"><span class="built_in">cd</span> gradle-demo</span><br><span class="line">gradle init</span><br></pre></td></tr></table></figure>
+<p>然后选择application作为project类型，语言选Java，DSL选Groovy，test框架选JUnit 4，project名设置gradle-demo，package名设置为demo。然后就可以看到Gradle生成了一些文件：</p>
+<ul>
+<li>build.gradle：这个文件包含了如何用Gradle构建项目的设置</li>
+<li>.gitattributes</li>
+<li>.gitignore</li>
+<li>.gradle：</li>
+<li>gradle：这个文件夹实际上是Gradle wrapper</li>
+<li>gradlew：</li>
+<li>gradlew.bat：</li>
+<li>settings.gradle</li>
+<li>src：源代码目录</li>
+</ul>
+<p>然后就可以用Gradle wrapper脚本来编译运行项目了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew run</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gradle-Wrapper"><a href="#Gradle-Wrapper" class="headerlink" title="Gradle Wrapper"></a>Gradle Wrapper</h2><h2 id="依赖类型"><a href="#依赖类型" class="headerlink" title="依赖类型"></a>依赖类型</h2><ul>
+<li>implementation</li>
+<li>api</li>
+<li>testImplementation</li>
+</ul>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-blog-with-hexo-and-github" class="article article-type-post" itemscope itemprop="blogPost">
   
   <div class="article-inner">
